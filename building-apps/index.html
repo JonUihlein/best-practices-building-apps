@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Esri Dev Summit 2022</title>
+
+    <link rel="stylesheet" href="../dist/reset.css" />
+    <link rel="stylesheet" href="../dist/reveal.css" />
+    <link rel="stylesheet" href="../dist/theme/black.css" />
+    ../
+    <!-- Override the Reveal theme varables: -->
+    <!-- https://github.com/hakimel/reveal.js/blob/master/css/theme/template/exposer.scss -->
+    <style type="text/css">
+      :root {
+        /* Color from slides */
+        --r-background-color: #01114f;
+
+        /* Main text color */
+        --r-main-color: #fff;
+
+        /* Arial font is recommended */
+        --r-heading-font: Arial, Helvetica Neue, Helvetica, sans-serif;
+        --r-main-font: Arial, Helvetica Neue, Helvetica, sans-serif;
+
+        /* For consistency with the template: */
+        --r-heading-font-weight: normal;
+        --r-heading-text-transform: none;
+        --r-heading-text-shadow: none;
+
+        /* Section subheader color per theme */
+        --r-section-subhead-color: #00ec86;
+        --iframe-scale: 0.6;
+      }
+
+      iframe {
+        background: #fff;
+      }
+
+      .two-columns {
+        font-size: 60%;
+        display: flex;
+        flex-direction: row;
+        gap: var(--r-block-margin);
+      }
+
+      .two-columns iframe {
+        top: 0;
+        left: 0;
+        width: calc(100% / var(--iframe-scale));
+        max-width: unset;
+        max-height: unset;
+        aspect-ratio: 4 / 3;
+        transform: translate(-50%, -50%) scale(var(--iframe-scale))
+          translate(50%, 50%);
+      }
+
+      .two-columns .iframe-wrapper {
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+      }
+
+      .two-columns pre {
+        margin: 0;
+        width: 100%;
+      }
+
+      .two-columns .left-column {
+        position: relative;
+        width: 60%;
+      }
+
+      .two-columns .left-column,
+      .two-columns .v-stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--r-block-margin);
+      }
+
+      .two-columns .left-column.r-stack {
+        display: grid;
+      }
+
+      .two-columns .right-column {
+        position: relative;
+        flex-grow: 1;
+        padding: 0;
+      }
+    </style>
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown="./index.md"></section>
+      </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
