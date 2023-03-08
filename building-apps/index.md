@@ -1,16 +1,8 @@
-<!-- .slide: data-background="../img/2022/dev-summit/bg-1.png" data-background-size="cover -->
+<!-- .slide: data-background="../img/2022/dev-summit/bg-5.png" data-background-size="cover -->
 <h1 style="text-align: left; font-size: 80px;">ArcGIS Maps SDK for JavaScript:</h1>
 <h2 style="text-align: left; font-size: 60px;">Best Practices for</h2>
 <h2 style="text-align: left; font-size: 60px;">Building Apps</h2>
-<p style="text-align: left; font-size: 30px;">Tristan Morrison and Jonathan Uihlein</p>
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-3.png" -->
-
-## Agenda
-
-<!-- <img src="./images/firehose.gif" alt="Agenda"> -->
+<p style="text-align: left; font-size: 30px;">Rene Rubalcava, Tristan Morrison, Jonathan Uihlein</p>
 
 ---
 
@@ -837,4 +829,3 @@ config.apiKey = import.meta.env.VITE_API_KEY;
 
 ---
 
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-8.png" -->
