@@ -511,6 +511,15 @@ view.ui.add(document.getElementById("app"), "top-right");
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
+## Styling
+
+- Frameworks (Tailwind)
+- Preprocessors (SASS)
+- UI Kits (Bootstrap)
+
+---
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
 ## SASS
 
 <div class="two-columns">
