@@ -489,8 +489,7 @@ view.ui.add(document.getElementById("app"), "top-right");
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
 ## Composition
-TODO: talk about widget lifecycle...
-what happens when you want to get rid of view etc
+
 <div>
   <img src="./images/lifecycle.svg" style="width: 300px" />
 </div>
@@ -772,16 +771,6 @@ export default defineConfig({
   ],
 });
 ```
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-### Tips & Tricks
-
-- Authentifcation
-- CDN
-- Optimisation for 3D (quality mode, OpenGL requirements)
 
 ---
 
