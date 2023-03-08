@@ -228,6 +228,17 @@ require(["./code1", "code2"], function (code1, code2) {
 
 ## Vite
 
+- Wide support
+  - TypeScript, JSX, CSS, Vue and more
+- Fast!
+  - Hot module replacement
+  - Pre-bundling (cold start)
+
+---
+<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
+
+## Vite
+
 <div class="two-columns">
   <div class="left-column">
     <div data-fragment-id="add-widget" class="code-snippet">
@@ -351,31 +362,6 @@ module.exports = {
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
-## Webpack
-
-[`@arcgis/webpack-plugin`](https://github.com/Esri/arcgis-webpack-plugin)
-
-- Useful to copy assets locally
-- Can filter unused assets
-  - e.g. SASS files, extra locales
-
-```js
-// webpack.config.js
-module.exports = {
-  ...
-  plugins: [
-    new ArcGISPlugin({
-      locales: ['en', 'es']
-    })
-  ]
-  ...
-}
-```
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
 ## Languages
 
 - JavaScript
@@ -423,12 +409,18 @@ npm i -g typescript
   <pre>
     <code class="lang-json" data-trim data-line-numbers>
 {
+  {
   "compilerOptions": {
-    "target": "es6"
-    "moduleResolution": "Node"
+    "esModuleInterop": true,
+    "lib": ["ES2020", "DOM"],
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES2020"
   },
-  "include": ["**/*.ts", "src/main.js"],
-  "exclude": ["**/node_modules/**"]
+  "include": ["./src"]
 }
     </code>
   </pre>
@@ -496,72 +488,6 @@ view.ui.add(document.getElementById("app"), "top-right");
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
-## TSX
-
-<div style="clear:both"><pre style="display:inline"><code class="html" style="display:inline">&lt;div&gt&lt;/div&gt</code></pre> -> <pre style="display:inline"><code style="display:inline">tsx("div")</code></pre></div>
-<br/>
-<div class="two-columns">
-  <div class="left-column fragment">
-    <div class="code-snippet">
-      <pre>
-      > MyWidget.ts
-        <code class="lang-ts" data-trim data-line-numbers>
-import { tsx } from "@arcgis/core/widgets/support/widget";
-import Widget from "@arcgis/core/widgets/Widget";
-import { subclass } from "esri/core/accessorSupport/decorators";
-&nbsp;
-@subclass("MyWidget")
-export default class MyWidget extends Widget {
-  render() {
-    return (
-      &lt;div id=&quot;app&quot; class=&quot;esri-widget&quot;&gt;
-        ...
-      &lt;/div&gt;
-    );
-  }
-}
-        </code>
-      </pre>
-    </div>
-    <div class="code-snippet">
-      <pre>
-      > main.ts
-        <code class="lang-ts" data-trim data-line-numbers>
-import MyWidget from "./MyWidget";
-view.ui.add(new MyWidget(), "top-right");
-</code>
-</pre>
-</div>
-
-  </div>
-  <div class="right-column">
-    <div class="code-snippet fragment">
-      <pre>
-      > tsconfig.json
-        <code class="lang-json" data-trim data-line-numbers>
-{
-  "compilerOptions": {
-    "target": "es6",
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "jsx": "react",
-    "jsxFactory": "tsx",
-    "lib": ["ES2020", "DOM"],
-    "moduleResolution": "node",
-  },
-  "include": ["**/*.ts", "src/main.js"],
-  "exclude": ["**/node_modules/**"]
-}
-        </code>
-      </pre>
-    </div>
-  </div>
-</div>
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
 ## Composition
 TODO: talk about widget lifecycle...
 what happens when you want to get rid of view etc
@@ -569,62 +495,6 @@ what happens when you want to get rid of view etc
   <img src="./images/lifecycle.svg" style="width: 300px" />
 </div>
 <br/>
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## Composition
-
-<div class="code-snippet">
-  <pre>
-  > MyWidget.ts
-    <code class="lang-ts" data-trim data-line-numbers>
-import BasemapGallery from
-  "@arcgis/core/widgets/BasemapGallery";
-&nbsp;
-@subclass("MyWidget")
-class MyWidget extends Widget {
-  @property()
-  view: SceneView;
-&nbsp;
-  render() {
-    return (
-      &lt;BasemapGallery view={this.view} /&gt;
-    );
-  }
-}
-</code>
-
-  </pre>
-</div>
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## Composition
-
-<div class="code-snippet">
-  <pre>
-  > MyWidget.ts
-    <code class="lang-ts" data-trim data-line-numbers>
-import MySecondWidget from "./MySecondWidget";
-&nbsp;
-@subclass("MyWidget")
-class MyWidget extends Widget {
-  @property()
-  view: SceneView;
-&nbsp;
-  render() {
-    return (
-      &lt;MySecondWidget /&gt;
-    );
-  }
-}
-</code>
-  </pre>
-</div>
-
 ---
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
@@ -715,7 +585,6 @@ $app-padding: 20px;
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
 ## Calcite Components
-TODO call out other calcite
 <div class="two-columns">
   <div class="left-column">
     <div data-fragment-id="add-widget" class="code-snippet">
@@ -850,17 +719,6 @@ data.layer = new FeatureLayer(params);
 
 ---
 
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## More...
-
-- Unit Testing
-- Web Components
-- Monorepos
-- Server-Side Rendering
-- Progressive Web Apps
-
----
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
@@ -875,20 +733,14 @@ data.layer = new FeatureLayer(params);
 
 <!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
 
-## Build a more complex app using Vue, Vite, Sass
+## Powerplant Viewer Demo
+<p style="text-align: center; font-size: 30px;"><a href="https://github.com/odoe/arcgis-create-t3-app">github.com/odoe/arcgis-create-t3-app</a></p>
 
-- Bring it all together to build an app
-- Vite - uses esbuild and rollup under the hood
-- TypeScript, Vue, Pinia, vue-router
-- Calcite Components
-- Jest
+- NextJS
+- React
+- TypeScript
+- tRPC
 
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-4.png" -->
-
-<h2 style="text-align: left; font-size: 60px;">Nearby App Demo</h2>
-<p style="text-align: left; font-size: 30px;"><a href="https://github.com/odoe/nearby-app">github.com/odoe/nearby-app</a></p>
 
 ---
 
@@ -920,36 +772,6 @@ export default defineConfig({
   ],
 });
 ```
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## Routing
-
-- vue-router
-  - Lazy load assets
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## Progressive Web App
-
-- Not entirely focused on performance
-- Native App experience
-- Easy with plugins
-  - vite has [vite-plugin-pwa](https://vite-plugin-pwa.netlify.app/)
-  - [Google Workbox](https://developers.google.com/web/tools/workbox/) for workers
-
----
-
-<!-- .slide: data-auto-animate data-background="../img/2022/dev-summit/bg-2.png" -->
-
-## Demo
-
-<img src="./images/nearby-app-home.png" height="25%" width="25%" alt="Nearby App Home">
-<img src="./images/nearby-app-map.png" height="25%" width="25%" alt="Nearby App Map">
 
 ---
 
